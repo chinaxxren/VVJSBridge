@@ -3,10 +3,8 @@
 // Copyright (c) 2021 chinaxxren. All rights reserved.
 //
 
-
 #import <UIKit/UIKit.h>
 
-@interface ViewController1 : UIViewController
+@interface TestWKWebViewController : UIViewController
 
 @end
-

@@ -5,7 +5,7 @@
 
 #import "AppDelegate.h"
 
-#import "ViewController1.h"
+#import "TestWKWebViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,7 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[ViewController1 new]];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[TestWKWebViewController new]];
     [self.window makeKeyAndVisible];
     
     NSLog(@"%s",__func__);
