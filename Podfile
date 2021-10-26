@@ -2,5 +2,5 @@
 platform :ios, '9.0'
 
 target "VVJSBridge" do
-    pod 'VVJSBridge', :path => '.'
+    pod 'VVJSBridge', :path => './'
 end

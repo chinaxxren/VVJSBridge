@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "VVJSBridge"
-  spec.version      = "0.0.1"
+  spec.version      = "0.0.4"
   spec.summary      = "VVJSBridge是JS与Native交互库"
   spec.homepage     = "https://github.com/chinaxxren/VVJSBridge"
   spec.license      = "MIT"
