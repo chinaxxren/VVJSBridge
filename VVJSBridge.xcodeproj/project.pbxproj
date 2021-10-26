@@ -291,7 +291,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VVJSBridge/Pods-VVJSBridge-resources.sh",
-				"${PODS_ROOT}/../LocalPods/VVJSBridge/VVJSBridge/Resources/VVJSBridge.js",
+				"${PODS_ROOT}/../LocalPods/VVJSBridge/Resources/VVJSBridge.js",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
