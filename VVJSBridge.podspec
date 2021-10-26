@@ -7,7 +7,7 @@ Pod::Spec.new do |spec|
   spec.license      = "MIT"
   spec.author       = { "chinaxxren" => "jiangmingz@qq.com" }
   spec.platform     = :ios, "9.0"
-  spec.source       = { :git => "git@github.com:chinaxxren/VVJSBridge.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/chinaxxren/VVJSBridge.git", :tag => "#{spec.version}" }
   spec.public_header_files = 'VVJSBridge/Classes/**/*.h'
   spec.source_files = 'Source/Classes/**/*'
   spec.resources = 'Source/Resources/*.js'
