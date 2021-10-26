@@ -1,32 +1,28 @@
 //
-//  JKEventHandler.m
-//  Pods
-//
-//  Created by Jack on 17/3/31.
-//
+// Created by 赵江明 on 2021/10/22.
+// Copyright (c) 2021 chinaxxren. All rights reserved.
 //
 
-#import "JKEventHandler.h"
-#import <JKDataHelper/JKDataHelper.h>
+#import "VVJSBridge.h"
 
 #ifdef DEBUG
-#define JKEventHandlerLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#define VVJSBridgeLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 #else
-#define JKEventHandlerLog(...)
+#define VVJSBridgeLog(...)
 #endif
 
-@implementation JKEventHandler
+@implementation VVJSBridge
 
-+ (void)cleanHandler:(JKEventHandler *)handler {
++ (void)cleanHandler:(VVJSBridge *)handler {
     if (handler.webView) {
-        [handler.webView evaluateJavaScript:@"JKEventHandler.removeAllCallBacks();" completionHandler:nil];//删除所有的回调事件
-        [handler.webView.configuration.userContentController removeScriptMessageHandlerForName:JKEventHandlerName];
+        [handler.webView evaluateJavaScript:@"VVJSBridge.removeAllCallBacks();" completionHandler:nil];//删除所有的回调事件
+        [handler.webView.configuration.userContentController removeScriptMessageHandlerForName:VVJSBridgeName];
     }
     handler = nil;
 }
 
 + (NSString *)handlerJS {
-    NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:@"JKEventHandler" ofType:@"js"];
+    NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:@"VVJSBridge" ofType:@"js"];
     NSString *handlerJS = [NSString stringWithContentsOfFile:path encoding:kCFStringEncodingUTF8 error:nil];
     handlerJS = [handlerJS stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     return handlerJS;
@@ -38,13 +34,13 @@
       didReceiveScriptMessage:(WKScriptMessage *)message {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored"-Wincompatible-pointer-types-discards-qualifiers"
-    if ([message.name isEqualToString:JKEventHandlerName]) {
+    if ([message.name isEqualToString:VVJSBridgeName]) {
 #pragma clang diagnostic pop
         NSString *plugin = [message.body jk_stringForKey:@"plugin"];
         NSString *funcName = [message.body jk_stringForKey:@"func"];
         NSDictionary *params = [message.body jk_dictionaryForKey:@"params"];
-        NSString *successCallBackID = [message.body jk_stringForKey:@"successCallBackID"];
-        NSString *failureCallBackID = [message.body jk_stringForKey:@"failureCallBackID"];
+        NSString *successCallBackID = [message.body jk_stringForKey:@"successCallbackId"];
+        NSString *failureCallBackID = [message.body jk_stringForKey:@"failureCallbackId"];
 
         funcName = [NSString stringWithFormat:@"%@:successCallback:failureCallback:", funcName];
         __weak typeof(self) weakSelf = self;
@@ -94,10 +90,10 @@
         response = jsonStr;
     }
     
-    NSString *js = [NSString stringWithFormat:@"JKEventHandler.callBack('%@','%@');", callBackName, response];
+    NSString *js = [NSString stringWithFormat:@"VVJSBridge.callBack('%@','%@');", callBackName, response];
     dispatch_async(dispatch_get_main_queue(), ^{
         [weakWebView evaluateJavaScript:js completionHandler:^(id _Nullable data, NSError *_Nullable error) {
-            JKEventHandlerLog(@"JKEventHandler.callBack: %@\n response: %@", callBackName, response);
+            VVJSBridgeLog(@"VVJSBridge.callBack: %@\n response: %@", callBackName, response);
         }];
     });
 }

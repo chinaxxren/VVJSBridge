@@ -154,6 +154,7 @@
 				B9BEADC31D253B97003303C1 /* Sources */,
 				B9BEADC41D253B97003303C1 /* Frameworks */,
 				B9BEADC51D253B97003303C1 /* Resources */,
+				92A5AF309D238E185B4702F8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -247,6 +248,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		92A5AF309D238E185B4702F8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VVJSBridge/Pods-VVJSBridge-resources.sh",
+				"${PODS_ROOT}/../LocalPods/VVJSBridge/VVJSBridge/Resources/JKEventHandler.js",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JKEventHandler.js",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VVJSBridge/Pods-VVJSBridge-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9E6813B2A2A8513471C0CE21 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

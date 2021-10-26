@@ -1,17 +1,14 @@
 //
-//  JKEventHandler.h
-//  Pods
-//
-//  Created by Jack on 17/3/31.
-//
+// Created by 赵江明 on 2021/10/22.
+// Copyright (c) 2021 chinaxxren. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <webkit/webkit.h>
 
-static NSString *const JKEventHandlerName = @"JKEventHandler";
+static NSString *const VVJSBridgeName = @"VVJSBridge";
 
-@interface JKEventHandler : NSObject <WKScriptMessageHandler>
+@interface VVJSBridge : NSObject <WKScriptMessageHandler>
 
 @property(nonatomic, weak) WKWebView *webView;
 @property(nonatomic, weak) id delegate;
@@ -21,7 +18,7 @@ static NSString *const JKEventHandlerName = @"JKEventHandler";
 /**
  清空handler的数据信息， 注入的脚本。绑定事件信息等等
  */
-+ (void)cleanHandler:(JKEventHandler *)handler;
++ (void)cleanHandler:(VVJSBridge *)handler;
 
 /**
  执行js脚本
