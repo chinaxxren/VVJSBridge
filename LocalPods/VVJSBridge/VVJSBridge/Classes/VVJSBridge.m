@@ -15,7 +15,7 @@
 
 + (void)cleanHandler:(VVJSBridge *)handler {
     if (handler.webView) {
-        [handler.webView evaluateJavaScript:@"VVJSBridge.removeAllCallBacks();" completionHandler:nil];//删除所有的回调事件
+        [handler.webView evaluateJavaScript:@"VVJSBridge.removeAllCallbacks();" completionHandler:nil];//删除所有的回调事件
         [handler.webView.configuration.userContentController removeScriptMessageHandlerForName:VVJSBridgeName];
     }
     handler = nil;
@@ -36,11 +36,11 @@
 #pragma clang diagnostic ignored"-Wincompatible-pointer-types-discards-qualifiers"
     if ([message.name isEqualToString:VVJSBridgeName]) {
 #pragma clang diagnostic pop
-        NSString *plugin = [message.body jk_stringForKey:@"plugin"];
-        NSString *funcName = [message.body jk_stringForKey:@"func"];
-        NSDictionary *params = [message.body jk_dictionaryForKey:@"params"];
-        NSString *successCallBackID = [message.body jk_stringForKey:@"successCallbackId"];
-        NSString *failureCallBackID = [message.body jk_stringForKey:@"failureCallbackId"];
+        NSString *plugin = message.body[@"plugin"];
+        NSString *funcName = message.body[@"func"];
+        NSDictionary *params = message.body[@"params"];
+        NSString *successCallBackID = message.body[@"successCallbackId"];
+        NSString *failureCallBackID = message.body[@"failureCallbackId"];
 
         funcName = [NSString stringWithFormat:@"%@:successCallback:failureCallback:", funcName];
         __weak typeof(self) weakSelf = self;
@@ -89,11 +89,11 @@
         jsonStr = [jsonStr stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         response = jsonStr;
     }
-    
-    NSString *js = [NSString stringWithFormat:@"VVJSBridge.callBack('%@','%@');", callBackName, response];
+
+    NSString *js = [NSString stringWithFormat:@"VVJSBridge.callback('%@','%@');", callBackName, response];
     dispatch_async(dispatch_get_main_queue(), ^{
         [weakWebView evaluateJavaScript:js completionHandler:^(id _Nullable data, NSError *_Nullable error) {
-            VVJSBridgeLog(@"VVJSBridge.callBack: %@\n response: %@", callBackName, response);
+            VVJSBridgeLog(@"VVJSBridge.callback: %@\n response: %@", callBackName, response);
         }];
     });
 }
