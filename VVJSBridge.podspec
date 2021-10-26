@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios, "9.0"
   spec.source       = { :git => "git@github.com:chinaxxren/VVJSBridge.git", :tag => "#{spec.version}" }
   spec.public_header_files = 'VVJSBridge/Classes/**/*.h'
-  spec.source_files = 'VVJSBridge/Classes/**/*'
-  spec.resources = 'VVJSBridge/Resources/*.js'
+  spec.source_files = 'Source/Classes/**/*'
+  spec.resources = 'Source/Resources/*.js'
   spec.frameworks  = "UIKit"
 end

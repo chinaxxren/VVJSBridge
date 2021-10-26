@@ -170,7 +170,7 @@
 				B9BEADC31D253B97003303C1 /* Sources */,
 				B9BEADC41D253B97003303C1 /* Frameworks */,
 				B9BEADC51D253B97003303C1 /* Resources */,
-				E195415D363D4B6058DCD8AB /* [CP] Copy Pods Resources */,
+				A0C77AC76F6CFEFBA923EFE1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -284,14 +284,14 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E195415D363D4B6058DCD8AB /* [CP] Copy Pods Resources */ = {
+		A0C77AC76F6CFEFBA923EFE1 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VVJSBridge/Pods-VVJSBridge-resources.sh",
-				"${PODS_ROOT}/../LocalPods/VVJSBridge/Resources/VVJSBridge.js",
+				"${PODS_ROOT}/../Source/Resources/VVJSBridge.js",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
